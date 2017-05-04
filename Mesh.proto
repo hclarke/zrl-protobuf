@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message Frame {
+	string name = 1;
+}
+
+message Mesh {
+	map<string,VectorArray> vertexData = 1;
+}
+
+message VectorArray {
+	uint32 dim = 1;
+	repeated float data = 2;
+}
