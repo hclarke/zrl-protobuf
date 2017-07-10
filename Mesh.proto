@@ -6,6 +6,7 @@ message Frame {
 
 message Mesh {
 	map<string,VectorArray> vertexData = 1;
+	repeated uint32 indices = 2;
 }
 
 message VectorArray {
