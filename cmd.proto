@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package zrl.cmd;
+
+message FrameStart {
+	uint64 frame_id = 1;
+	float frame_time = 2;
+}
+
+message Command {
+	uint64 frame_id = 1;
+	oneof command {
+		DoneCommand done = 2;
+		SetBufferCommand setBuffer = 3;
+		SetIndexBufferCommand setIndexBuffer = 4;
+		DrawCommand drawCommand = 5;
+	}
+}
+
+message DoneCommand {
+}
+message SetBufferCommand {
+	uint32 id = 1;
+	uint32 dim = 2;
+	repeated float data = 3;
+}
+
+message SetIndexBufferCommand {
+	uint32 id = 1;
+	repeated uint32 data = 2;
+}
+
+message DrawCommand {
+	map<string,uint32> vertexAttributes = 1;
+	uint32 indices = 2;
+}
