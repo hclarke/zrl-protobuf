@@ -4,14 +4,14 @@ package zrl.cmd;
 
 message Command {
 	oneof cmd_data {
-		DoneCommand done = 1;
+		Done done = 1;
 		SetBuffer set_buffer = 2;
 		SetIndices set_indices = 3;
-		DrawCommand draw = 4;
+		Draw draw = 4;
 	}
 }
 
-message DoneCommand {
+message Done {
 }
 message SetBuffer {
 	uint32 id = 1;
@@ -24,7 +24,7 @@ message SetIndices {
 	repeated uint32 data = 2;
 }
 
-message DrawCommand {
+message Draw {
 	map<string,uint32> vertex_attributes = 1;
 	uint32 indices = 2;
 }
