@@ -3,17 +3,17 @@ syntax = "proto3";
 package zrl.cmd;
 
 message Command {
-	oneof command {
+	oneof cmd_data {
 		DoneCommand done = 1;
-		SetBufferCommand set_buffer = 2;
-		SetIndexBufferCommand set_indices = 3;
+		SetBuffer set_buffer = 2;
+		SetIndices set_indices = 3;
 		DrawCommand draw = 4;
 	}
 }
 
 message DoneCommand {
 }
-message SetBufferCommand {
+message SetBuffer {
 	uint32 id = 1;
 	uint32 dim = 2;
 	repeated float data = 3;
