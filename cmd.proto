@@ -12,8 +12,10 @@ message Command {
 }
 
 message Done {
-	string message = 1;
+	uint32 frame_number = 1;
+	double time = 2;
 }
+
 message SetBuffer {
 	uint32 id = 1; //TODO: make id string?
 	uint32 dim = 2;
