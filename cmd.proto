@@ -12,9 +12,10 @@ message Command {
 }
 
 message Done {
+	string message = 1;
 }
 message SetBuffer {
-	uint32 id = 1;
+	uint32 id = 1; //TODO: make id string?
 	uint32 dim = 2;
 	repeated float data = 3;
 }
