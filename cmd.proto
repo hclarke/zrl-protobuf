@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package zrl.cmd;
 
+message FrameStatus {
+	uint32 frame_number = 1;
+}
+
 message Command {
 	oneof cmd_data {
 		Done done = 1;
@@ -13,7 +17,6 @@ message Command {
 
 message Done {
 	uint32 frame_number = 1;
-	double time = 2;
 }
 
 message SetBuffer {
