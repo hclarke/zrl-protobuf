@@ -9,7 +9,7 @@ message FrameStatus {
 message Command {
 	oneof cmd_data {
 		Done done = 1;
-		SerResource set_resource = 2;
+		SetResource set_resource = 2;
 		Draw draw = 3;
 	}
 }
