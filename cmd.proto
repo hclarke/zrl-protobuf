@@ -20,17 +20,25 @@ message Done {
 }
 
 message SetBuffer {
-	uint32 id = 1; //TODO: make id string?
-	uint32 dim = 2;
-	repeated float data = 3;
+	string namespace = 1;
+	string name = 2;
+	uint32 dim = 3;
+	repeated float data = 4;
 }
 
 message SetIndices {
-	uint32 id = 1;
+	string namespace = 1;
 	repeated uint32 data = 2;
 }
 
+message SetProgram {
+	string name = 1;
+	string vert_source = 2;
+	string frag_source = 3;
+}
+
 message Draw {
-	map<string,uint32> vertex_attributes = 1;
-	uint32 indices = 2;
+	string program = 1;
+	repeated string model = 2; //search these in order for attributes
+	repeated string uniforms = 3; //search in order for uniforms
 }
