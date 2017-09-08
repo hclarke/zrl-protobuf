@@ -9,9 +9,8 @@ message FrameStatus {
 message Command {
 	oneof cmd_data {
 		Done done = 1;
-		SetBuffer set_buffer = 2;
-		SetIndices set_indices = 3;
-		Draw draw = 4;
+		SerResource set_resource = 2;
+		Draw draw = 3;
 	}
 }
 
@@ -19,26 +18,33 @@ message Done {
 	uint32 frame_number = 1;
 }
 
-message SetBuffer {
+message SetResource {
 	string namespace = 1;
 	string name = 2;
-	uint32 dim = 3;
-	repeated float data = 4;
+	oneof resource {
+		Buffer buffer = 3;
+		Indices indices = 4;
+		Program program = 5;
+	}
+}
+message Buffer {
+	uint32 dim = 1;
+	repeated float data = 2;
 }
 
-message SetIndices {
-	string namespace = 1;
-	repeated uint32 data = 2;
+message Indices {
+	repeated uint32 data = 1;
 }
 
-message SetProgram {
-	string name = 1;
-	string vert_source = 2;
-	string frag_source = 3;
+message Program {
+	string vert_source = 1;
+	string frag_source = 2;
 }
 
 message Draw {
-	string program = 1;
-	repeated string model = 2; //search these in order for attributes
-	repeated string uniforms = 3; //search in order for uniforms
+	string program_namespace = 1;
+	string program_name = 2;
+
+	repeated string uniform_namespaces = 3;
+	repeated string attribute_namespaces = 4;
 }
